@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Button Actions</title>
+    <style>
+        .box{
+            width:100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn">
+        <input type="button" value="append" class="append" />
+        <input type="button" value="remove" class="remove" />
+        <input type="button" value="show" class="show" />
+        <input type="button" value="hide" class="hide" />
+        <input type="button" value="toggle" class="toggle" />
+        <input type="button" value="fadein" class="fadein" />
+        <input type="button" value="fadeout" class="fadeout" />
+        <input type="button" value="fadetoggle" class="fadetoggle" />
+        <input type="button" value="addclass" class="addclass" />
+        <input type="button" value="removeclass" class="removeclass" />
+        <input type="button" value="toggleclass" class="toggleclass" />
+        <input type="button" value="slideup" class="slideup" />
+        <input type="button" value="slidedown" class="slidedown" />
+        <input type="button" value="slidetoggle" class="slidetoggle" />
+      </div>
+      <div class="content"></div>
+        <script>
+            $(function(){
+                $(".append").click(() => {
+                  $(".content").append(`<div class= "box"></div>`)
+                  $(".box").last().css("background-color" , makeColor())
+                })
+                function makeColor(){
+                    const randomColor = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+                    return randomColor;
+                }
+                $(".remove").click(() => {
+                    $(".box").remove();
+                })
+                $(".show").click(() => {
+                    $(".box").show();
+                })
+                $(".hide").click(() => {
+                    $(".box").hide();
+                })
+                $(".toggle").click(() => {
+                    $(".box").toggle();
+                })
+                //.fadein 자연스럽게 보이게 하기, .fadeout 자연스럽게 안 보이게 하기
+                $(".fadein").click(() => {
+                    $(".box").fadeIn( 2000); 
+                     //.fadeIn(2000) 2000이면 2초동안 자연스럽게
+                                    })
+                $(".fadeout").click(() => {
+                    $(".box").fadeOut(1000);
+                })
+                $(".fadetoggle").click(() => {
+                    $(".box").fadeToggle(3000);
+                })
+                $(".addclass").click(() => {
+                    $(".box").addClass("red");
+                })
+                $(".removeclass").click(() => {
+                    $(".box").removeClass("red");
+                })
+                $(".toggleclass").click(() => {
+                    $(".box:odd").toggleClass("red");
+                    $(".box:even").toggleClass();
+                })
+                $(".slideup").click(() => {
+                    $(".box:odd").slideUp();
+                    $(".box:even").slideUp();
+                })
+                $(".slidedown").click(() => {
+                    $(".box:odd").slideDown();
+                    $(".box:even").slideDown();
+                })
+                $(".slidetoggle").click(() => {
+                    $(".content div").each(function(index, item){
+                        $(item).text(index)
+
+                    })
+                    $(".box: even").slideToggle();
+                })
+            })
+        </script>
+   
+</body>
+</html>
